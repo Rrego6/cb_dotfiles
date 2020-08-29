@@ -1,0 +1,30 @@
+general {
+  output_format = "i3bar"
+  interval = 1
+  colors = true
+  color_good = "#50FA7B"
+  color_degraded = "#F1FA8C"
+  color_bad = "#FF5555"
+}
+
+order += "tztime local"
+order += "battery 0"
+order += "ipv4"
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+        hide_if_equals_localtime = false
+}
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+
+
